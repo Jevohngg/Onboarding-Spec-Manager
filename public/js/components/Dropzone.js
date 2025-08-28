@@ -10,7 +10,7 @@ export class Dropzone {
    * @param {string} [opts.iconUrl] - optional external svg/png path. If provided, used instead of iconId.
    * @param {string} [opts.iconLabel] - accessible label for the icon image
    */
-  constructor({ onFiles, accept = '.pdf,.doc,.docx,.csv', iconId = 'icon-upload', iconUrl, iconLabel = 'Upload' } = {}) {
+  constructor({ onFiles, accept = '.pdf,.doc,.docx,.csv,.xls,.xlsx', iconId = 'icon-upload', iconUrl, iconLabel = 'Upload' } = {}) {
     this.onFiles = onFiles;
 
     // Root container

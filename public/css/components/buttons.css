@@ -39,7 +39,7 @@ color: var(--Colors-Text-text-primary_on-brand, #FFF);
 
 /* Button/medium */
 font-family: Inter;
-font-size: 0.875rem;
+font-size: 14px;
 font-style: normal;
 font-weight: 600;
 line-height: 1.25rem; /* 142.857% */
@@ -71,12 +71,16 @@ color: var(--Colors-Text-text-secondary, #3E4041);
 
 /* Button/small */
 font-family: Inter;
-font-size: 0.75rem;
+font-size: 14px;
 font-style: normal;
 font-weight: 600;
 line-height: 1rem; /* 133.333% */
 text-transform: capitalize;
 
+}
+
+#btn-do-later{
+  font-size: 12px;
 }
 
 .btn--secondary:hover{

@@ -1,0 +1,185 @@
+/* /public/css/components/stepper.css */
+
+/* ── Base layout ─────────────────────────────────────────────────────────── */
+.stepper {
+  --track-color: #e7e9ee;         /* light gray dots */
+  --track-offset: 28px;            /* space from edges so dots don't run under panel edges */
+  --dot-size: 3px;                 /* size of each dot */
+  --dot-gap: 10px;                 /* spacing between dots */
+  --dot-diam: var(--dot-size);     /* ensure connector uses same diameter */
+
+  position: relative;
+  display: flex;
+  gap: var(--space-16);
+  align-items: center;
+      padding: 24px 0px;
+
+  display: flex;
+  max-width: 63rem;
+  justify-content: center;
+  align-items: flex-start;
+ 
+  align-self: stretch;
+
+  position: relative;
+}
+
+/* Dotted track behind items */
+/* Connector only between items (added by JS) */
+.stepper__connector {
+
+  margin-top: 20px !important;
+  flex: 1 1 auto;
+  height: var(--dot-diam);
+
+  background-image: radial-gradient(circle, var(--track-color) 60%, transparent 61%);
+  background-size: var(--dot-gap) var(--dot-diam);
+  background-repeat: repeat-x;
+  background-position: left center;
+      width: 62%;
+    position: absolute;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+/* Preferred: mask gives razor-sharp, perfectly round dots */
+@supports ((-webkit-mask: radial-gradient(circle, #000 50%, transparent 51%)) or
+           (mask: radial-gradient(circle, #000 50%, transparent 51%))) {
+  .stepper__connector {
+    background-image: none;                      /* disable fallback image */
+    background-color: var(--track-color);        /* paint color via bg */
+    -webkit-mask: radial-gradient(circle, #000 49%, transparent 50%)
+                   left center / var(--dot-gap) var(--dot-diam, var(--dot-size)) repeat-x;
+            mask: radial-gradient(circle, #000 -19%, transparent 50%) left center / var(--dot-gap) var(--dot-diam, var(--dot-size)) repeat-x;
+  }
+}
+
+/* Hide connectors on narrow screens where items may wrap */
+@media (max-width: 700px) {
+  .stepper__connector { display: none; }
+}
+
+/* On very small screens, hide the track (items may wrap) */
+@media (max-width: 700px) {
+  .stepper::before { display: none; }
+}
+
+/* ── Items & buttons ────────────────────────────────────────────────────── */
+.stepper__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  position: relative;
+  z-index: 1; /* above dotted track */
+  min-width: 160px;
+}
+
+.stepper__item.is-done .stepper__check { display: inline-block; }
+
+.stepper__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  background: none;
+  border: none;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-4);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg, 0.75rem);
+  flex: 1 0 0;
+}
+
+.stepper__btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Badge sits on top of the dotted track and covers it cleanly */
+.stepper__badge {
+  font-size: 12px;
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.1875rem 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-full, 624.9375rem);
+  border: 1px solid var(--Colors-Border-border-secondary, #E9EAEB);
+  background: var(--Colors-Background-bg-primary, #FFF);
+  color: black;
+  min-width: 1.5rem;
+}
+
+.stepper__label{
+  color: var(--colors-text-text-secondary-700, #414651);
+  text-align: center;
+  /* Text sm/Semibold */
+  font-family: var(--Font-family-font-family-body, Inter);
+  font-size: var(--Font-size-text-sm, 0.875rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--Line-height-text-sm, 1.25rem); /* 142.857% */
+}
+
+/* Active step styling */
+.stepper__btn[aria-current="step"] .stepper__badge {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.1875rem 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-full, 624.9375rem);
+  border: 1px solid var(--Colors-Border-border-secondary, #E9EAEB);
+  background: var(--Colors-Background-bg-primary, #FFF);
+  color: black;
+  opacity: 100%;
+  font-weight: 600;
+      border: 1px solid #1a73e8;
+    color: #1a73e8;
+}
+
+.sidebar__item{
+  color: var(--Colors-Text-text-secondary, #3E4041);
+font-feature-settings: 'liga' off, 'clig' off;
+font-family: Inter;
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 700;
+line-height: 1.75rem; /* 200% */
+color: var(--Colors-Text-text-secondary, #3E4041);
+font-feature-settings: 'liga' off, 'clig' off;
+font-family: Inter;
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.75rem;
+
+
+}
+
+/* The check icon for completed steps */
+.stepper__check {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.375rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 624.9375rem;
+  background: var(--Colors-Background-bg-success-solid, #079455);
+  display: none;
+  fill: #fff;
+  min-width: 1.5rem;
+}
+
+/* Ensure the green check pill shows when the step is done (overrides earlier rule) */
+.stepper__item.is-done .stepper__check { display: flex; }

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Onboarding Wizard POC</title>
+
+  <!-- Base CSS (scaffolding only) -->
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components/buttons.css">
+  <link rel="stylesheet" href="/css/components/stepper.css">
+  <link rel="stylesheet" href="/css/components/forms.css">
+  <link rel="stylesheet" href="/css/components/dropzone.css">
+  <link rel="stylesheet" href="/css/components/wizard.css">
+  <link rel="stylesheet" href="/css/components/toast.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <!-- Placeholder page content underneath the overlay -->
+  <header class="site-header">
+    <!-- <h1>Welcome to Your Dashboard</h1>
+    <p>This is a placeholder page that remains visible once you close the onboarding overlay.</p> -->
+    <button id="open-onboarding" class="btn btn--primary" type="button"
+        onclick="window.location.reload()">Launch Onboarding</button>
+
+  </header>
+
+  <main class="site-main">
+
+  </main>
+
+  <!-- Toasts live region -->
+  <div id="toasts" class="toasts" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- SVG sprite (external) -->
+  <div aria-hidden="true" hidden>
+    <img src="/assets/icons.svg" alt="">
+  </div>
+
+  <!-- App -->
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

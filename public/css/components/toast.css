@@ -1,0 +1,18 @@
+.toasts {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: var(--z-toast);
+  display: grid;
+  gap: var(--space-8);
+}
+
+.toast {
+  background: #111;
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-4);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  font-size: 0.95rem;
+  opacity: 0.98;
+}
